@@ -1,7 +1,10 @@
 package KillerBot.Onda;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +16,7 @@ import java.util.TimerTask;
 
 import javax.imageio.ImageIO;
 
+import twitter4j.StatusUpdate;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -40,20 +44,20 @@ public class Tarea extends TimerTask{
 		mape.put("Laura Ortiz", "@lau_dsn");
 		mape.put("Sergio Castillo", "@Sergio35444057");
 		mape.put("Marta Fores", "@mforesinsa");
-		mape.put("Cesar Pascual", "@cesaronda96");
+		mape.put("Salva Cabedo", "@Cabedo_17");
 		mape.put("Claudia Moya", "@claudiamoya1999");
-		mape.put("Mireia", "@Miireiaa20");
-		mape.put("Michelle", "@MichelleDsn1");
+		mape.put("Mireia Marti", "@Miireiaa20");
+		mape.put("Oscar Jimenez", null);
 		mape.put("Juan Vives", "@Juuan92");
 		mape.put("Cristina Blazquez", "@crisblazquez98");
 		mape.put("Yael Huget", "@yaelhm10");
 		mape.put("Cristina Gallego", "@crisgallego99");
 		mape.put("Alex Valero", "@Valero5_rck");
-		mape.put("Oscar Jimenez", "@oskiki_etk");
+		mape.put("Claudia Lucena", "@_claudialucena_");
 		mape.put("Reyes Peris", "@reyesnlx");
 		mape.put("Mark Garcia", "@mark_RCK"); //22
-		mape.put("Nacho Davila", "@nacho_7_rck");
-		mape.put("Javi Sol", "@javi96sol");
+		mape.put("Nacho Davila", "@NachettoXx");
+		mape.put("Susana Garcia", "@SusanaGarcia99");
 		mape.put("Carlos Cruz", "@CarlosRck");
 		mape.put("Juan Silvestre", "@Juansilvestree");
 		mape.put("Kike Garcia", "@Kikegarcia_7");
@@ -63,28 +67,28 @@ public class Tarea extends TimerTask{
 		mape.put("Mar Leones", "@marleonesfolch");
 		mape.put("Emilo Feliu", "@emiliofeliu");
 		mape.put("Nacho Hernandez", "@nachogym94");
-		mape.put("Borja Garcia", "@BorjaaGarciaa");
-		mape.put("Pedro Ecamez", "@PedroEscamezG");
-		mape.put("Javi Ortells", "@ortells95");
+		mape.put("Denis Valentin", "@Denis10Valentin");
+		mape.put("Alba Sorní", "@albaOnda");
+		mape.put("Aitana Julve", "@Aitanajulve");
 		mape.put("Anna Castillo", "@annacastillo99");
-		mape.put("Alberto Garcia", "@Alberto_Sofok");
-		mape.put("Sergio Juarez", "@SergioJuarez10");
+		mape.put("Ainoa Martinez", "@Ainoaa_11");
+		mape.put("Elena Blanco", "@Elena_nlx");
 		mape.put("Elena Monzonis", "@ElenaMonzonis");
 		mape.put("Carlos Alejandro", "@carlos051097"); //41
 		mape.put("Ruben Vizcaino", "@tito_vizcaino14");
-		mape.put("Sergio Lopez", "@slopezmanuel");
+		mape.put("Vicente Varella", "@VicenVD");
 		mape.put("Alex Molina", "@Aleex_molinaa");
-		mape.put("Ana Belen", "@_anabelen00");//45
+		mape.put("Vicente Muñoz", "@Vicentemg97");//45
 		mape.put("Alex Molina", "@alexmoli_95");
 		mape.put("Andrea Benages", "@andreabenages");
 		mape.put("Antonio Gimeno", "@_antoniogimeno");
 		mape.put("Javier Vicent", "@javivicent97");
 		mape.put("Lluis Castañ", "@lluiscasfer");//50
-		mape.put("Alexandra Campos", "@alexandraraigad");
-		mape.put("Abel Navarro", "@Abel24Navarro");
+		mape.put("Clara Chiva", "@ClaraChiva");
+		mape.put("Paula Lucena", "@_paulalucena_");
 		mape.put("Claudia Gimeno", "@ClauSLP3");
 		mape.put("Jorge Ten", "@jorgeten10");
-		mape.put("Eric Llorens", "@llorens23");//55
+		mape.put("Carmina Franch", "@carmina_est");//55
 		mape.put("Naxo Leon", "@naxo_rck");
 		mape.put("Ivan Reboll", "@rckivan");
 		mape.put("Eric Sansano", "@Eric_sansano8");
@@ -120,7 +124,9 @@ public class Tarea extends TimerTask{
 		mape.put("Roberto Lozar", "@robertolozar");
 		mape.put("David Alarcon", "@Dave_Alarcon");
 		mape.put("Eva Badenes", "@evabadenes05");
-		
+		mape.put("Ruben Segura", "@rubensegura98");
+		mape.put("El Churro", null);
+		mape.put("Ester Jimenez", "ester_nlx");
 		nombres = listaDeNombres(mape);
 		
 		
@@ -137,13 +143,13 @@ public class Tarea extends TimerTask{
 	@Override
 	public void run() {
 		
-//		nombres = duelo(nombres);
-//		if(nombres.length == 1) {
-////			twitterServicio(nombres[0],null,1);
+		nombres = duelo(nombres);
+		if(nombres.length == 1) {
+//			twitterServicio(nombres[0],null,1);
 //			System.out.println(nombres[0]+" se los ha cargado a todos");
-//			
-//			cancel();
-//		}
+			
+			cancel();
+		}
 		
 	} 
 	
@@ -159,20 +165,35 @@ public class Tarea extends TimerTask{
 			y = lista[n1 - 1];
 		}
 		String yt = mape.get(y);
+		try {
+			crearImagen(lista);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		String[]
 		if (cont>2){	
 			cont--;
 			if(xt == null && yt == null){
+//				twitterServicio(x,y,cont);
 				System.out.println(x + " ha matado a " + y + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
 			else if(xt == null){
+//				twitterServicio(x,y,cont);
 				System.out.println(x + " ha matado a " + y + " " + yt + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
 			else if(yt == null){
+//				twitterServicio(x,y,cont);
 				System.out.println(x + " " + xt + " ha matado a " + y + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
-			else System.out.println(x + " " + xt + " ha matado a " + y + " " + yt + " quedan " + cont + " ondenses. #OndaWarBot");
+			else{ System.out.println(x + " " + xt + " ha matado a " + y + " " + yt + " quedan " + cont + " ondenses. #OndaWarBot");
+//			twitterServicio(x,y,cont);
 			}
-		else System.out.println(x + " " + xt +" ha matado a " + y + " " + yt +", " + x + " se los ha cargado a todos. #OndaWarBot");
+			}
+		else{ System.out.println(x + " " + xt +" ha matado a " + y + " " + yt +", " + x + " se los ha cargado a todos. #OndaWarBot");
+//		twitterServicio(x,y,cont);
+		}
+		
 //		while (n == n1) {
 //			n1 = (int) (Math.random() * lista.length) + 1;
 //			y = lista[n1 - 1];
@@ -214,20 +235,29 @@ public class Tarea extends TimerTask{
 	}
   
 	public static void twitterServicio(String asesino, String asesinado,int conta){
-		String consumerKey = "JIEmn6zRpq9Dyx9UpmOI58tLm";
-		String consumerSecret = "GnDPXEqZS2at5WYyfYDYqIb8zXEMQ7OxZzHXPETXTbnoS8uGpB";
-		String accessToken = "1149316675877167104-28J4wL2i34CgHWUR2dQrcJ4Zf6EUly";
-		String accessTokenSecret = "gLVo84n8L5lLMoexLpih8Ae73esZauFzdL4uyki2vemX8";
+		String consumerKey = "OXd5oPvVPhXqE1i856SZSeZ9R";
+		String consumerSecret = "XRT9sdX4Q35wNGDIwRSX5QrMcjPqrm5lUIS6jJvNeDKyAOAQ0g";
+		String accessToken = "1149316675877167104-ZIOKZAH7SZ361PVsGTMucFDh11xk9v";
+		String accessTokenSecret = "2kvJHQ2uwPFro5ZBlw1bu2J7UGJnpWSMkhogmbrYu2u6J";
 		
 		ConfigurationBuilder cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true).setOAuthConsumerKey(consumerKey).setOAuthConsumerSecret(consumerSecret)
 				.setOAuthAccessToken(accessToken).setOAuthAccessTokenSecret(accessTokenSecret);
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter twitter = tf.getInstance();
+//		twitter.file
+		String statusMessage;
+		File file = new File("C:/Users/Julio/workspace/github/Onda/Text.jpg");
+		
 		
 		try {
-			if(conta > 1)twitter.updateStatus(asesino+" ha asesinado a "+asesinado+" quedan "+ conta + " en la peña");
-			else twitter.updateStatus(asesino+" ha asesinado a "+asesinado+", se los ha cargado a todos");
+			if(conta > 1){
+				statusMessage = (asesino+" ha asesinado a "+asesinado+" quedan "+ conta + " ondenses. #OndaWarBot");
+				StatusUpdate status = new StatusUpdate(statusMessage);
+				status.setMedia(file);
+				twitter.updateStatus(status);
+			}
+			else twitter.updateStatus(asesino+" ha asesinado a "+asesinado+", se los ha cargado a todos. #OndaWarBot ");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -244,15 +274,55 @@ public class Tarea extends TimerTask{
 //			ImageIO.write(image, "png", new File("prueba.png"));
 //		}catch (IOException e) {e.printStackTrace();}
 //	}
+	
 	public static String[] listaDeNombres(Map<String,String> lista){
 		String[] claves = lista.keySet().toArray(new String[0]);
 		 
 //		System.out.println(claves.length);
 		Arrays.sort(claves);
-		for (String clave: claves)
-			  System.out.println(clave);
+//		for (String clave: claves)
+//			  System.out.println(clave);
 		
 		return claves;
 		
+	}
+	
+	public void crearImagen(String nombres[]) throws IOException{
+		BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+	    Graphics2D g2d = img.createGraphics();
+	    Font font = new Font("Arial", Font.BOLD, 12);
+	    g2d.setFont(font);
+	    FontMetrics fm = g2d.getFontMetrics();
+//	    int width = fm.stringWidth(text);
+//	    int height = fm.getHeight();
+	    int width = 555;
+	    int height = 300;
+	    g2d.dispose();
+
+	    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+	    g2d = img.createGraphics();
+	    g2d.setFont(font);
+	    fm = g2d.getFontMetrics();
+	    
+	    g2d.setColor(Color.BLACK);
+	    g2d.setBackground(Color.WHITE);
+	    
+	    
+	    int i = 0;
+	    for(int k=1; k<=20; k++){
+	    	if(i==nombres.length)break;
+	    	g2d.drawString(nombres[i],10, k*15);
+	        i++;
+	        
+	        for(int l=1; l<5; l++){
+	        	if(i==nombres.length)break;
+	        	g2d.drawString(nombres[i], l*115, k*15);
+	            i++;
+	            
+	        }
+//	        g2d.fillRect(x, y, width, height);
+	        ImageIO.write(img, "jpg", new File("Text.jpg"));
+		
+	}
 	}
 }
