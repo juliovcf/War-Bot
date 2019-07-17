@@ -24,121 +24,120 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class Tarea extends TimerTask{
 	public BufferedImage image;
-//	static String[] nombres = {"Julio","Nacho","Fernando","Roni","Mark","Darlyn",
+ //	static String[] nombres = {"Julio","Nacho","Fernando","Roni","Mark","Darlyn",
 //		"Carlos","Oscar","Naxo","Cervello","Pedro","Ivan","Juanjo","Perolo","Sarasa",
 //		"David","Lluis","Contreras","Rober","Ismael"};
 	
-	Map<String, String> mape = new HashMap<String, String>(100);
+	static Map<String, String> mape = new HashMap<String, String>(100);
 	String[] nombres = new String[100];
 	
     
 	
 	public Tarea(){
-		mape.put("Julio Perez", "@julio_vcf");
-		mape.put("Nekane Iserte", "@Nekaneiserte");
-		mape.put("Pedro Berrocal", "@pedrorck16");
-		mape.put("Rafa Perez", "@rafetaonda");
-		mape.put("Fernando Villegas", "@fernando_RCK");
-		mape.put("Anna Romero", "@anna_romero9");
-		mape.put("Claudia Catalan", "@catalanclaudia9");
-		mape.put("Laura Ortiz", "@lau_dsn");
-		mape.put("Sergio Castillo", "@Sergio35444057");
-		mape.put("Marta Fores", "@mforesinsa");
-		mape.put("Salva Cabedo", "@Cabedo_17");
-		mape.put("Claudia Moya", "@claudiamoya1999");
-		mape.put("Mireia Marti", "@Miireiaa20");
-		mape.put("Oscar Jimenez", null);
-		mape.put("Juan Vives", "@Juuan92");
-		mape.put("Cristina Blazquez", "@crisblazquez98");
-		mape.put("Yael Huget", "@yaelhm10");
-		mape.put("Cristina Gallego", "@crisgallego99");
-		mape.put("Alex Valero", "@Valero5_rck");
-		mape.put("Claudia Lucena", "@_claudialucena_");
-		mape.put("Reyes Peris", "@reyesnlx");
-		mape.put("Mark Garcia", "@mark_RCK"); //22
-		mape.put("Nacho Davila", "@NachettoXx");
-		mape.put("Susana Garcia", "@SusanaGarcia99");
-		mape.put("Carlos Cruz", "@CarlosRck");
-		mape.put("Juan Silvestre", "@Juansilvestree");
-		mape.put("Kike Garcia", "@Kikegarcia_7");
-		mape.put("Darlyn", "@DARLYN_RCK");
-		mape.put("Juanjo Herrero", "@juanjoo_rck");
-		mape.put("Josep Gomez", "@Pajo_9");
-		mape.put("Mar Leones", "@marleonesfolch");
-		mape.put("Emilo Feliu", "@emiliofeliu");
-		mape.put("Nacho Hernandez", "@nachogym94");
-		mape.put("Denis Valentin", "@Denis10Valentin");
-		mape.put("Alba Sorní", "@albaOnda");
-		mape.put("Aitana Julve", "@Aitanajulve");
-		mape.put("Anna Castillo", "@annacastillo99");
-		mape.put("Ainoa Martinez", "@Ainoaa_11");
-		mape.put("Elena Blanco", "@Elena_nlx");
-		mape.put("Elena Monzonis", "@ElenaMonzonis");
-		mape.put("Carlos Alejandro", "@carlos051097"); //41
-		mape.put("Ruben Vizcaino", "@tito_vizcaino14");
-		mape.put("Vicente Varella", "@VicenVD");
-		mape.put("Alex Molina", "@Aleex_molinaa");
-		mape.put("Vicente Muñoz", "@Vicentemg97");//45
-		mape.put("Alex Molina", "@alexmoli_95");
-		mape.put("Andrea Benages", "@andreabenages");
-		mape.put("Antonio Gimeno", "@_antoniogimeno");
-		mape.put("Javier Vicent", "@javivicent97");
-		mape.put("Lluis Castañ", "@lluiscasfer");//50
-		mape.put("Clara Chiva", "@ClaraChiva");
-		mape.put("Paula Lucena", "@_paulalucena_");
-		mape.put("Claudia Gimeno", "@ClauSLP3");
-		mape.put("Jorge Ten", "@jorgeten10");
-		mape.put("Carmina Franch", "@carmina_est");//55
-		mape.put("Naxo Leon", "@naxo_rck");
-		mape.put("Ivan Reboll", "@rckivan");
-		mape.put("Eric Sansano", "@Eric_sansano8");
-		mape.put("David Gomez", "@96davidgomez");
-		mape.put("Roberto Martinez", "@RobertoRck");//60
-		mape.put("Eric Cervello", "@cerve_rck");
-		mape.put("Rocio Anaya", "@RociioAnaya12");
-		mape.put("Aida Fernandez", "@aiidafernandez");
-		mape.put("Juanjo Piquer", "@juanjopiquer21");
-		mape.put("Andrea Cruzado", "@andreacruzaado");//65
-		mape.put("Ana Castillo", "@Anacastiillo9");
-		mape.put("Andrea Benages", "@andreabenages");
-		mape.put("Carmen Mallen", "@Carmen_Mallen");
-		mape.put("Maria Ortells", "@Maria_Ortells");
-		mape.put("Ines Gea", "@ineesgea");//70
-		mape.put("Iris Perez", "@iris_pv13");
-		mape.put("Paula Piquer", "@paula_piquer_");
-		mape.put("Lucia Romero", "@Lu_romero98");
-		mape.put("Adrian Guillamon", "@adri_guillamon");
-		mape.put("Lidia Soler", "@lidiasoler1");
-		mape.put("Sandra Muñoz", "@sandrita_est");
-		mape.put("Enric Borrás", "@EnricBR10");
-		mape.put("Alberto Lopez", "@LoperaRPK");
-		mape.put("Sara Martinez", "@sara_mt12");
-		mape.put("Aiman", "@aimanrbs17"); //80
-		mape.put("Elena Moya", "@elenyclau24");
-		mape.put("Esther Vicent", "@esthervicent");
-		mape.put("Aida Escudero", "@Aida878");
-		mape.put("Sonia Belmonte", "@sonia_slp");
-		mape.put("Laia Solsona", "Laia_sg_99");//85
-		mape.put("Elena Blanco", "@Elena_Nlx");
-		mape.put("Jordi Ramos", "@jordiramos_rtsk");
-		mape.put("Roberto Lozar", "@robertolozar");
-		mape.put("David Alarcon", "@Dave_Alarcon");
-		mape.put("Eva Badenes", "@evabadenes05");
-		mape.put("Ruben Segura", "@rubensegura98");
-		mape.put("El Churro", null);
-		mape.put("Ester Jimenez", "ester_nlx");
+//		mape.put("Julio Perez", "@julio_vcf");
+//		mape.put("Nekane Iserte", "@Nekaneiserte");
+//		mape.put("Pedro Berrocal", "@pedrorck16");
+//		mape.put("Rafa Perez", "@rafetaonda");
+//		mape.put("Fernando Villegas", "@fernando_RCK");
+//		mape.put("Anna Romero", "@anna_romero9");
+//		mape.put("Claudia Catalan", "@catalanclaudia9");
+//		mape.put("Laura Ortiz", "@lau_dsn");
+//		mape.put("Sergio Castillo", "@Sergio35444057");
+//		mape.put("Marta Fores", "@mforesinsa");
+//		mape.put("Salva Cabedo", "@Cabedo_17");
+//		mape.put("Claudia Moya", "@claudiamoya1999");
+//		mape.put("Mireia Marti", "@Miireiaa20");
+//		mape.put("Anna Marco", "@AnnaMarco01");
+//		mape.put("Juan Vives", "@Juuan92");
+//		mape.put("Cristina Blazquez", "@crisblazquez98");
+//		mape.put("Yael Huget", "@yaelhm10");
+//		mape.put("Cristina Gallego", "@crisgallego99");
+//		mape.put("Alex Valero", "@Valero5_rck");
+//		mape.put("Claudia Lucena", "@_claudialucena_");
+//		mape.put("Reyes Peris", "@reyesnlx");
+//		mape.put("Mark Garcia", "@mark_RCK"); //22
+//		mape.put("Nacho Davila", "@NachettoXx");
+//		mape.put("Susana Garcia", "@SusanaGarcia99");
+//		mape.put("Carlos Cruz", "@CarlosRck");
+//		mape.put("Juan Silvestre", "@Juansilvestree");
+//		mape.put("Kike Garcia", "@Kikegarcia_7");
+//		mape.put("Darlyn", "@DARLYN_RCK");
+//		mape.put("Juanjo Herrero", "@juanjoo_rck");
+//		mape.put("Josep Gomez", "@Pajo_9");
+//		mape.put("Mar Leones", "@marleonesfolch");
+//		mape.put("Emilo Feliu", "@emiliofeliu");
+//		mape.put("Nacho Hernandez", "@nachogym94");
+//		mape.put("Denis Valentin", "@Denis10Valentin");
+//		mape.put("Alba Sorní", "@albaOnda");
+//		mape.put("Aitana Julve", "@Aitanajulve");
+//		mape.put("Anna Castillo", "@annacastillo99");
+//		mape.put("Ainoa Martinez", "@Ainoaa_11");
+//		mape.put("Elena Blanco", "@Elena_nlx");
+//		mape.put("Elena Monzonis", "@ElenaMonzonis");
+//		mape.put("Carlos Alejandro", "@carlos051097"); //41
+//		mape.put("Ruben Vizcaino", "@tito_vizcaino14");
+//		mape.put("Vicente Varella", "@VicenVD");
+//		mape.put("Alex Molina", "@Aleex_molinaa");
+//		mape.put("Vicente Muñoz", "@Vicentemg97");//45
+//		mape.put("Alex Molina", "@alexmoli_95");
+//		mape.put("Andrea Benages", "@andreabenages");
+//		mape.put("Antonio Gimeno", "@_antoniogimeno");
+//		mape.put("Javier Vicent", "@javivicent97");
+//		mape.put("Lluis Castañ", "@lluiscasfer");//50
+//		mape.put("Clara Chiva", "@ClaraChiva");
+//		mape.put("Paula Lucena", "@_paulalucena_");
+//		mape.put("Claudia Gimeno", "@ClauSLP3");
+//		mape.put("Jorge Ten", "@jorgeten10");
+//		mape.put("Carmina Franch", "@carmina_est");//55
+//		mape.put("Naxo Leon", "@naxo_rck");
+//		mape.put("Ivan Reboll", "@rckivan");
+//		mape.put("Eric Sansano", "@Eric_sansano8");
+//		mape.put("David Gomez", "@96davidgomez");
+//		mape.put("Roberto Martinez", "@RobertoRck");//60
+//		mape.put("Eric Cervello", "@cerve_rck");
+//		mape.put("Rocio Anaya", "@RociioAnaya12");
+//		mape.put("Aida Fernandez", "@aiidafernandez");
+//		mape.put("Juanjo Piquer", "@juanjopiquer21");
+//		mape.put("Andrea Cruzado", "@andreacruzaado");//65
+//		mape.put("Ana Castillo", "@Anacastiillo9");
+//		mape.put("Andrea Benages", "@andreabenages");
+//		mape.put("Carmen Mallen", "@Carmen_Mallen");
+//		mape.put("Maria Ortells", "@Maria_Ortells");
+//		mape.put("Ines Gea", "@ineesgea");//70
+//		mape.put("Iris Perez", "@iris_pv13");
+//		mape.put("Paula Piquer", "@paula_piquer_");
+//		mape.put("Lucia Romero", "@Lu_romero98");
+//		mape.put("Adrian Guillamon", "@adri_guillamon");
+//		mape.put("Lidia Soler", "@lidiasoler1");
+//		mape.put("Sandra Muñoz", "@sandrita_est");
+//		mape.put("Enric Borrás", "@EnricBR10");
+//		mape.put("Alberto Lopez", "@LoperaRPK");
+//		mape.put("Sara Martinez", "@sara_mt12");
+//		mape.put("Aiman", "@aimanrbs17"); //80
+//		mape.put("Elena Moya", "@elenyclau24");
+//		mape.put("Esther Vicent", "@esthervicent");
+//		mape.put("Aida Escudero", "@Aida878");
+//		mape.put("Sonia Belmonte", "@sonia_slp");
+//		mape.put("Laia Solsona", "Laia_sg_99");//85
+//		mape.put("Elena Blanco", "@Elena_Nlx");
+//		mape.put("Jordi Ramos", "@jordiramos_rtsk");
+//		mape.put("Roberto Lozar", "@robertolozar");
+//		mape.put("David Alarcon", "@Dave_Alarcon");
+//		mape.put("Eva Badenes", "@evabadenes05");
+//		mape.put("Ruben Segura", "@rubensegura98");
+//		mape.put("El Churro", null);
+//		mape.put("Ester Jimenez", "ester_nlx");
+	
+		mape.put("Julio Perez", "julio_vcf");
+		mape.put("Nekane Iserte", null);
+		mape.put("Pedro Berrocal", null);
+		mape.put("Rafa Perez", null);
+		mape.put("Fernando Villegas", "fernando_RCK");
+		mape.put("Anna Romero", "anna_romero9");
+		mape.put("Claudia Catalan", "catalanclaudia9");
+		
 		nombres = listaDeNombres(mape);
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 	}
 	@Override
 	public void run() {
@@ -165,8 +164,9 @@ public class Tarea extends TimerTask{
 			y = lista[n1 - 1];
 		}
 		String yt = mape.get(y);
+		String [] aux = asesinado(lista,n1-1);
 		try {
-			crearImagen(lista);
+			crearImagen(aux);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -175,32 +175,25 @@ public class Tarea extends TimerTask{
 		if (cont>2){	
 			cont--;
 			if(xt == null && yt == null){
-//				twitterServicio(x,y,cont);
+				twitterServicio(x,y,cont);
 				System.out.println(x + " ha matado a " + y + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
 			else if(xt == null){
-//				twitterServicio(x,y,cont);
+				twitterServicio(x,y,cont);
 				System.out.println(x + " ha matado a " + y + " " + yt + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
 			else if(yt == null){
-//				twitterServicio(x,y,cont);
+				twitterServicio(x,y,cont);
 				System.out.println(x + " " + xt + " ha matado a " + y + " quedan " + cont + " ondenses. #OndaWarBot");
 			}
 			else{ System.out.println(x + " " + xt + " ha matado a " + y + " " + yt + " quedan " + cont + " ondenses. #OndaWarBot");
-//			twitterServicio(x,y,cont);
+			twitterServicio(x,y,cont);
 			}
 			}
 		else{ System.out.println(x + " " + xt +" ha matado a " + y + " " + yt +", " + x + " se los ha cargado a todos. #OndaWarBot");
-//		twitterServicio(x,y,cont);
+		twitterServicio(x,y,cont);
 		}
 		
-//		while (n == n1) {
-//			n1 = (int) (Math.random() * lista.length) + 1;
-//			y = lista[n1 - 1];
-//		}
-		
-		
-//		twitterServicio(x,y,cont);
 		
 		return asesinado(lista, n1-1);
 
@@ -245,19 +238,21 @@ public class Tarea extends TimerTask{
 				.setOAuthAccessToken(accessToken).setOAuthAccessTokenSecret(accessTokenSecret);
 		TwitterFactory tf = new TwitterFactory(cb.build());
 		Twitter twitter = tf.getInstance();
-//		twitter.file
 		String statusMessage;
 		File file = new File("C:/Users/Julio/workspace/github/Onda/Text.jpg");
-		
+		String xt = mape.get(asesino);
+		if (xt==null)xt="";
+		String yt = mape.get(asesinado);
+		if (yt==null)yt="";
 		
 		try {
 			if(conta > 1){
-				statusMessage = (asesino+" ha asesinado a "+asesinado+" quedan "+ conta + " ondenses. #OndaWarBot");
+				statusMessage = (asesino+ " " + xt +" ha matado a "+ asesinado + " " + yt + " quedan "+ conta + " ondenses. #OndaWarBot");
 				StatusUpdate status = new StatusUpdate(statusMessage);
 				status.setMedia(file);
 				twitter.updateStatus(status);
 			}
-			else twitter.updateStatus(asesino+" ha asesinado a "+asesinado+", se los ha cargado a todos. #OndaWarBot ");
+			else twitter.updateStatus(asesino+" "+ xt +" ha matado a "+asesinado + " "+ yt + ", se los ha cargado a todos. #OndaWarBot ");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
@@ -291,20 +286,22 @@ public class Tarea extends TimerTask{
 		BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 	    Graphics2D g2d = img.createGraphics();
 	    Font font = new Font("Arial", Font.BOLD, 12);
+	   
 	    g2d.setFont(font);
 	    FontMetrics fm = g2d.getFontMetrics();
 //	    int width = fm.stringWidth(text);
 //	    int height = fm.getHeight();
+	    if(nombres.length>=20){
 	    int width = 555;
 	    int height = 300;
 	    g2d.dispose();
 
-	    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+	    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
 	    g2d = img.createGraphics();
 	    g2d.setFont(font);
 	    fm = g2d.getFontMetrics();
 	    
-	    g2d.setColor(Color.BLACK);
+	    g2d.setColor(Color.WHITE);
 	    g2d.setBackground(Color.WHITE);
 	    
 	    
@@ -322,7 +319,37 @@ public class Tarea extends TimerTask{
 	        }
 //	        g2d.fillRect(x, y, width, height);
 	        ImageIO.write(img, "jpg", new File("Text.jpg"));
-		
+	    }
+	}
+	    else{
+		    int width = 450;
+		    int height = 150;
+		    g2d.dispose();
+
+		    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
+		    g2d = img.createGraphics();
+		    g2d.setFont(font);
+		    fm = g2d.getFontMetrics();
+		    
+		    g2d.setColor(Color.WHITE);
+		    g2d.setBackground(Color.WHITE);
+		    
+		    
+		    int i = 0;
+		    for(int k=1; k<=5; k++){
+		    	if(i==nombres.length)break;
+		    	g2d.drawString(nombres[i],10, k*15);
+		        i++;
+		        
+		        for(int l=1; l<4; l++){
+		        	if(i==nombres.length)break;
+		        	g2d.drawString(nombres[i], l*115, k*15);
+		            i++;
+		            
+		        }
+//		        g2d.fillRect(x, y, width, height);
+		        ImageIO.write(img, "jpg", new File("Text.jpg"));
+	    }
 	}
 	}
 }
