@@ -17,7 +17,8 @@ public class App
     {
     	
     	Timer temp = new Timer();
-    	temp.schedule(new Tarea(), 1000, 20000);
+    	temp.schedule(new Tarea(), 0, 10000);
+//    	temp.schedule(new Tarea(), firstTime, period);
 //    	while (nombres.length > 1){
 //			nombres = duelo(nombres);
 			
