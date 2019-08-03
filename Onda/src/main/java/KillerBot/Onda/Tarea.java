@@ -8,9 +8,12 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -26,25 +29,41 @@ import twitter4j.conf.ConfigurationBuilder;
 public class Tarea extends TimerTask{
 	public BufferedImage image;
 	
-	static Map<String, String> mape = new HashMap<String, String>(100); //HashMap donde vinculo cada nombre con su cuenta
+	static Map<String, String> mape = new HashMap<String, String>(200); //HashMap donde vinculo cada nombre con su cuenta
 	String[] nombres = new String[200]; //lista de los que estan vivos (nombres), muertos y formas de morir y lugares
-	String[] muertos = new String[200];
-	static String[] muertes = {"  ha matado de una apuñalada por la espalda", " ha matado con un cubata envenenado", " ha atropellado con el coche", 
-						" ha matado con un palo", " le ha metido 20 navajazos", " le ha dado una paliza", " le ha dado un botellazo en la cabeza", " mientras dormía",
-						" ha matado por exceso de sexo", " ha matado de un susto", " le ha desmembrado las extremidades",
-						" le ha reventado la cabeza con un bate", " le ha comido el cuello", " le ha matado de asco", " se ha comido",
-						" le ha hecho cosquillas hasta morir", " ha prendido fuego", " ha enterrado vivo"};
-	static String[] lugares = {" en el Mercadona"," en el Castillo", " debajo un punte", " en el museo del Taulell", " en el instituto",
-						" en el Salvador", " en el calvario", " en los Carmelitas", " en la piazzeta", " en las 3 Culturas", " en su casa"};
-    
+	List<String> muertos = new ArrayList<String>();
+	Date fecha = new Date();
+	int hora = fecha.getHours();
+	static String[] muertes = {" le ha metido una puñalada por la espalda", " le ha dado un cubata envenenado", " ha atropellado con el coche", 
+						" ha matado con un palo", " le ha metido 20 navajazos en el pecho", " le ha dado una paliza", " le ha dado un botellazo en la cabeza", " ha asfixiado mientras dormía",
+						" ha matado por exceso de sexo", " ha matado de un susto", " ha descuartizado y enterrado",
+						" le ha reventado la cabeza con un bate", " le ha comido la cara", " ha matado de asco", " se ha comido",
+						" ha hecho cosquillas hasta matar", " ha prendido fuego", " ha enterrado vivo", " ha arrancado la piel a tiras",
+						" le ha metido un escopetazo", " sentía demasiada envidia y ha matado", " quería probar su nuevo revolver y ha disparado",
+						" le ha metido una patada voladora", " le ha partido el cuello", " ha empalado",
+						" le ha partido las piernas", " ha hecho un sacrificio a sus dioses quemando", " se ha tirado tal pedo que ha matado",
+						" ha invitado a chupitos de Jaggermeister, y ha hecho que le de un coma etilico", " quería probar sus nuevos masclets y se los ha metido por el culo",
+						" le ha puesto una bomba en el coche", " allahu akbar", " ha torturado hasta la muerte", " ha ahogado", " ha estrangulado",
+						" ha matado con su belleza", " es tan feo que ha matado al mirar", " le ha perreado hasta morir", " ha asfixiado de un abrazo",
+						" le ha metido una barra de fuet hasta la traquea", " le ha metido un flechazo en el ojo", " ha ayudado a ahorcarse",
+						" ha asfixiado con su propio vomito", " ha dado de comer a sus perros despues de descuartizar", " le ha puesto la zancadilla",
+						" ha ganado en un combate a muerte", " ha decapitado", " le ha clavado un tenedor en el ojo", " ha degollado como a un pollo",
+						" ha matado con el mocho"};
 	
+	static String[] lugares = {" en el Mercadona"," en el Castillo", " debajo un punte", " en el museo del Taulell", " en el instituto",
+						" en el Salvador", " en el calvario", " en los Carmelitas", " en la piazzeta", " en las 3 Culturas", " en su casa", " volviendo de Artesa",
+						" en las fiestas de su pueblo", " en la Moreria", " en la Font de Dins", " en su casal", " durante Fira D'Onda", 
+						" en el ecoparque", " por un ajuste de cuentas", " en la Panderola", " en la Plaza España", " en el encierro", " en su sotano",
+						" mientras bebian juntos", " por hereje", " por capull@", " por borrach@", " en la plaza del pueblo", " por empanao", " por pesao"};
+    
+
 	public Tarea(){
 //		mape.put("Julio Perez", "@julio_vcf");
 //		mape.put("Nekane Iserte", "@Nekaneiserte10");
 //		mape.put("Pedro Berrocal", "@pedrorck16");
 //		mape.put("Rafa Perez", "@rafetaonda");
 //		mape.put("Fernando Villegas", "@fernando_RCK");
-//		mape.put("Anna Romero", "@anna_romero9");
+//		mape.put("Raquel Rubio", "");
 //		mape.put("Claudia Catalan", "@catalanclaudia9");
 //		mape.put("Roger Mondragon", "@rogerrmc17");
 //		mape.put("Sergio Castillo", "@Sergio35444057");
@@ -57,19 +76,19 @@ public class Tarea extends TimerTask{
 //		mape.put("Cristina Blazquez", "@crisblazquez98");
 //		mape.put("Yael Huget", "@yaelhm10");
 //		mape.put("Cristina Gallego", "@crisgallego99");
-//		mape.put("Alex Valero", "@Valero5_rck");
+//		mape.put("Andrada Huzsa", "@andradahz");
 //		mape.put("Mousin", null);
 //		mape.put("Reyes Peris", "@reyesnlx");
 //		mape.put("Mark Garcia", "@mark_RCK"); //22
 //		mape.put("Nacho Davila", "@NachettoXx");
 //		mape.put("Susana Garcia", "@SusanaGarcia99");
 //		mape.put("Carlos Cruz", "@CarlosRck");
-//		mape.put("Juan Silvestre", "@Juansilvestree");
-//		mape.put("Kike Garcia", "@Kikegarcia_7");
-//		mape.put("Darlyn", "@DARLYN_RCK");
+//		mape.put("Raquel Rubio", "@racrubio14");
+//		mape.put("Camila Ortiz", "@CamilaCastano25");
+//		mape.put("Darlyn Jose", "@DARLYN_RCK");
 //		mape.put("Juanjo Herrero", "@juanjoo_rck");
 //		mape.put("Josep Gomez", "@Pajo_9");
-////		mape.put("Mar Leones", "@marleonesfolch");
+//		mape.put("Nuria Piquer", "@2299Nuria");
 //		mape.put("Emilo Feliu", "@emiliofeliu");
 //		mape.put("Nacho Hernandez", "@_nachogym");
 //		mape.put("Denis Valentin", "@Denis10Valentin");
@@ -79,8 +98,8 @@ public class Tarea extends TimerTask{
 //		mape.put("Ainoa Martinez", "@Ainoaa_11");
 //		mape.put("Elena Blanco", "@Elena_Nlx");
 //		mape.put("Javi Garcia", "@javi_mas14");
-//		mape.put("Carlos Alejandro", "@carlos051097"); //41
-//		mape.put("Ruben Vizcaino", "@tito_vizcaino14");
+//		mape.put("Sara Chorda", "@SaraChorda_99"); //41
+//		mape.put("Jordi Muñoz", "@Marsaleta_");
 //		mape.put("Vicente Varella", "@VicenVD");
 //		mape.put("Alex Molina", "@Aleex_molinaa");
 //		mape.put("Vicente Muñoz", "@Vicentemg97");//45
@@ -95,16 +114,16 @@ public class Tarea extends TimerTask{
 //		mape.put("Jorge Ten", "@jorgeten10");
 //		mape.put("Carmina Franch", "@carmina_est");//55
 //		mape.put("Naxo Leon", "@naxo_rck");
-//		mape.put("Ivan Reboll", "@rckivan");
+//		mape.put("Ivan Reboll", "@IvanReboll");
 //		mape.put("Eric Sansano", "@Eric_sansano8");
 //		mape.put("David Gomez", "@96davidgomez");
 //		mape.put("Roberto Martinez", "@RobertoRck");//60
 //		mape.put("Eric Cervello", "@cerve_rck");
-////		mape.put("Rocio Anaya", "@RociioAnaya12");
+//		mape.put("Ximo Alós", "@AlosXimo");
 //		mape.put("Aida Fernandez", "@aiidafernandez");
 //		mape.put("Juanjo Piquer", "@juanjopiquer21");
 //		mape.put("Andrea Cruzado", "@andreacruzaado");//65
-//		mape.put("Ana Castillo", "@Anacastiillo9");
+//		mape.put("Yeray Boix", "@MrBoixCoix");
 //		mape.put("Andrea Benages", "@andreabenages");
 //		mape.put("Carmen Mallen", "@Carmen_Mallen");
 //		mape.put("Maria Ortells", "@Maria_Ortells17");
@@ -116,7 +135,7 @@ public class Tarea extends TimerTask{
 //		mape.put("Lidia Soler", "@lidiasoler1");
 //		mape.put("Sandra Muñoz", "@sandrita_est");
 //		mape.put("Enric Borrás", "@EnricBR10");
-//		mape.put("Alberto Lopez", "@LoperaRPK");
+//		mape.put("Nuria Garcia", "@ngarciamas");
 //		mape.put("Sara Martinez", "@sara_mt12");
 //		mape.put("Aiman", "@aimanrbs17"); //80
 //		mape.put("Elena Moya", "@elenyclau24");
@@ -124,8 +143,8 @@ public class Tarea extends TimerTask{
 //		mape.put("Aida Escudero", "@Aida878");
 //		mape.put("Sonia Belmonte", "@sonia_slp");
 //		mape.put("Laia Solsona", "@Laia_sg_99");//85
-////		mape.put("Elena Blanco", "@Elena_Nlx");
-//		mape.put("Jordi Ramos", "@jordiramos_rtsk");
+//		mape.put("Carlos Ruiz", "@Carlos_RM00");
+//		mape.put("M.Sánchez", "@__migueliko__");
 //		mape.put("Roberto Lozar", "@robertolozar");
 //		mape.put("David Alarcon", "@Dave_Alarcon");
 //		mape.put("Eva Badenes", "@evabadenes05");
@@ -142,18 +161,69 @@ public class Tarea extends TimerTask{
 //		mape.put("Maria Esteller", "@mariaestellerf");
 //		mape.put("Carlos Mas", "@carlos_rpk");
 //		mape.put("Eva Martinez", "@evinlx99");
+//		mape.put("Raquel Mezquita", "@raquel_mezquita");
+//		mape.put("Juan Pa Ortiz", "@Juanpa_kls");
+//		mape.put("Maria Gallego","@maria_galleg0");
+//		mape.put("Panadero","@panaderoentask");
+//		mape.put("Esther Fernández","@estiwifdez");
+//		mape.put("Javi Olucha","@JaviOlucha");
+//		mape.put("Nuria Aguilella","@NuriaAguilella");
+//		mape.put("Paula Gallen","@paulagpoles99");
+//		mape.put("Patricia Albalat","@patrialbalat20");
+//		mape.put("Raúl Cruzado","@cruzadoaltk");
+//		mape.put("Beatriz Castillo", "@beatrixcastle");
+//		mape.put("Juan Melero", "@Melero_2000");
+//		mape.put("Lydia Vicent", "@lydiavicent_");
+//		mape.put("María Zapata", "@meery_zapata");
+//		mape.put("Belen Cabedo", "@snakkkkke");
+//		mape.put("Patricia Albalat", "@patrialbalat20");
+//		mape.put("Luis Castillo", "@Luis12Castillo");
+//		mape.put("Sara Usó", "@sarauso02");
+//		mape.put("Laura Castelló","@Laura15castello");
+//		mape.put("Jorge Chaume", "@JorgeChaume");
+//		mape.put("Paula Viñes", "@PaulaVC00");
+//		mape.put("Carmen Guillamon", "@Cg_carmen_00");
+//		mape.put("María Martinez", "@mariamartt01");
+//		mape.put("Mireia Cervello", "@mireiacerve08");
+//		mape.put("Gaizka Ojeda", "@gaizzka07");
+//		mape.put("Samuel Toledo", "@SamuToledo4");
+//		mape.put("Carla Asensio", "@alracoisnesa");
+//		mape.put("Pablo Martínez", "@Pablomb10_");
+//		mape.put("Merche Sanchez", "@merche_msm");
+//		mape.put("María Gil", "@Mariaruiizg_");
+//		mape.put("Iris Valero", "@iirisvm");
+//		mape.put("Rubén Castillo", "@Rubenikas99");
+//		mape.put("Ángela Sebastián", "@Angela_12200");
+//		mape.put("Rubén Marco", "@rubenmarco_10");
+//		mape.put("Carla Feliu", "@carla_feliu");
+//		mape.put("Adrián Feliu", "@Adrian_Feliu");
+//		mape.put("Nacho Ribes", "@nachoribess");
+//		mape.put("Lucia Benages", "@luciabenages");
+//		mape.put("Victor García", "@garcia_victor00");
+//		mape.put("Rubén Marco", "@rubenmarco_10");
+//		mape.put("Jose Montiel", "@josma100");
+//		mape.put("", "");
 		
 
-		mape.put("Julio Perez", "julio_vcf");
-		mape.put("Nekane Iserte", null);
-		mape.put("Pedro Berrocal", null);
-		mape.put("Rafa Perez", null);
-		mape.put("Fernando Villegas", "fernando_RCK");
-		mape.put("Anna Romero", "anna_romero9");
-		mape.put("Claudia Catalan", "catalanclaudia9");
+		mape.put("Juliio Perez", "julio_vcf");
+		mape.put("Nekkane Iserte", null);
+		mape.put("Pedrro Berrocal", null);
+		mape.put("Raffa Perez", null);
+		mape.put("Ferrnando Villegas", "fernando_RCK");
+		mape.put("Annna Romero", "anna_romero9");
+		mape.put("Clauudia Catalan", "catalanclaudia9");
+		
+//		muertos.add("Evaristo");
+//		muertos.add("Matias");
+//		muertos.add("Evaristo");
+//		muertos.add("Evaisto");
+//		muertos.add("Evaro");
+//		muertos.add("Evarto");
+
+		
 		
 		nombres = listaDeNombres(mape); //La lista nombres coge los nombres del Map
-
+		
 	}
 	@Override
 	public void run() {
@@ -163,25 +233,29 @@ public class Tarea extends TimerTask{
 //			// TODO Auto-generated catch block					/*Con esto creo la primera imagen cuando voy a empezar*/
 //			e.printStackTrace();
 //		} 
-		nombres = duelo(nombres);
-		if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
-			cancel();
+		if(hora==12||hora==13||hora==5||hora==6){
+			System.out.println("Estoy durmiendo porque son las " + hora);
 		}
-//		int contV =0; 
-//		int contF = 0;
-//		for(int i=0;i<200;i++){
-//			
-//			if(resucitar() == true)contV++;
-//			else contF++;
-//			
+		else{
+			if(resucitar()==true){
+			if(muertos.isEmpty()){duelo(nombres);}
+				resurreccion(nombres, muertos);
+		} else{
+			duelo(nombres);
+		}		
+			if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
+			cancel();
+			}
+		}
+
+//			System.out.println(nombres.length);
+//			cancel();
 //		}
-//		System.out.println(contV);
-//		System.out.println(contF);
-//		cancel();
-		
+	
 	} 
 	
-	public String[] duelo(String[] lista) { //Metodo principal que enfrente a la gente y llama al resto de metodos
+	public void duelo(String[] lista) { //Metodo principal que enfrente a la gente y llama al resto de metodos
+
 		int n = (int) (Math.random() * lista.length) + 1;
 		int n1 = (int) (Math.random() * lista.length) + 1;
 		int m = (int) (Math.random() * muertes.length) + 1;			/*se elige a los dos oponentes y la forma de morir y lugar*/
@@ -199,7 +273,7 @@ public class Tarea extends TimerTask{
 		twitterAviso(x,y);
 		xt = mape.get(x);
 		yt = mape.get(y);
-		System.out.println("En 5 mins se van a enfrentar " + x + " " + xt + " vs " + y + " " + yt + " solo uno de los dos seguirá con vida. Suerte!");
+		System.out.println("En 5 mins se van a enfrentar " + x + " vs " + y + " solo uno de los dos seguirá con vida. Suerte!");
 		if(headsOrTails()== true){
 			asesino = x;
 			asesinado = y;
@@ -216,18 +290,16 @@ public class Tarea extends TimerTask{
 		if(xt == null) xt="";
 		if(yt == null) yt="";
 		
-		
 		try {
-			TimeUnit.MINUTES.sleep(1);
+			TimeUnit.MINUTES.sleep(5);
 		} catch (InterruptedException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
-		String muerte = muertes[m-1];
-		String lugar = lugares[l-1];
+			
 		String [] aux = asesinado(lista,n1-1);
+		muertos.add(asesinado);
+		nombres = aux;
 		try {
 			crearImagen(aux);
 		} catch (IOException e) {
@@ -237,18 +309,48 @@ public class Tarea extends TimerTask{
 		
 		if(cont>2){	
 			cont--;
-			
-			
-			System.out.println(asesino + " " + xt + " ha matado a " + asesinado + " " + yt + muerte + lugar + " quedan " + cont + " ondenses. #OndaWarBot");
+				
+			System.out.println(asesino + " ha matado a " + asesinado + " quedan " + cont + " ondenses.");
 			twitterServicio(asesino,asesinado,cont);
 		}
 		else{ 
 			cont--;
-			System.out.println(asesino + " " + xt +" ha matado a " + asesinado + " " + yt + muerte + lugar + ", " + x + " se los ha cargado a todos. #OndaWarBot");
+			System.out.println(asesino + " " + xt +" ha matado a " + asesinado + " " + yt + " " + asesino + " se los ha cargado a todos. #OndaWarBot");
 		twitterServicio(asesino,asesinado,cont);
 		}
+//		return asesinado(lista, n1-1);
 		
-		return asesinado(lista, n1-1);
+	}
+	
+	public void resurreccion(String[] vivos, List<String> muert){ 	//Metodo que resucita a alguien
+		String[] array = (String[]) muert.toArray(new String[muert.size()]); //convertimos el ArrayList muertos en array
+		
+		try {
+			crearImagen(array);		//creamos la imagen con los muertos
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("En 5 minutos alguien va a resucitar de entre los muertos");
+		twitterAvisoR();		//Avisa de que alguien va a resucitar
+		try {
+		TimeUnit.MINUTES.sleep(5);
+	} catch (InterruptedException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+		int n = (int) (Math.random() * muert.size());
+		String resucitado = muert.get(n); 	//coge al elegido
+		nombres = haResucitado(vivos,resucitado); 		//lo resucita y quita de la lista de muertos
+		muertos.remove(resucitado);
+		try {
+			crearImagen(nombres);		//creamos la imagen con los muertos
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(resucitado + " ha resucitado!");
+	    twitterResucita(resucitado);		//lo anuncia en twitter
 		
 	}
 
@@ -314,7 +416,7 @@ public class Tarea extends TimerTask{
 		
 		try {
 			if(conta > 1){
-				File file = new File("C:/Users/Julio/workspace/github/Onda/Text.jpg");
+				File file = new File("C:/Users/Julio/workspace/github/Onda/Text1.jpg");
 				statusMessage = (asesino + " " + xt + muerte + " a " + asesinado + " " + yt + lugar + ", quedan " + conta + " ondenses. #OndaWarBot");
 				StatusUpdate status = new StatusUpdate(statusMessage);
 				status.setMedia(file);
@@ -362,6 +464,67 @@ public class Tarea extends TimerTask{
 		}
 	}
 	
+	public static void twitterAvisoR(){
+//		String consumerKey = "OXd5oPvVPhXqE1i856SZSeZ9R";
+//		String consumerSecret = "XRT9sdX4Q35wNGDIwRSX5QrMcjPqrm5lUIS6jJvNeDKyAOAQ0g";
+//		String accessToken = "1149316675877167104-ZIOKZAH7SZ361PVsGTMucFDh11xk9v";
+//		String accessTokenSecret = "2kvJHQ2uwPFro5ZBlw1bu2J7UGJnpWSMkhogmbrYu2u6J";
+		
+		String consumerKey = "KdpN6MZxxQy1dKbQPOuruSfxT";
+		String consumerSecret = "Zw2FfKtbZqzjIcWebiAG0rDPkXkczplpg7ojHUHifI7J3dnI68";
+		String accessToken = "1151775525062479872-WrvedHQYmQIDlag9o9ZvjCqPTHtJG5";
+		String accessTokenSecret = "Ux4PobRTXL5j7meKdEhaFElAVlzJN8KxZI1qreBA2u4wp";
+		
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true).setOAuthConsumerKey(consumerKey).setOAuthConsumerSecret(consumerSecret)
+				.setOAuthAccessToken(accessToken).setOAuthAccessTokenSecret(accessTokenSecret);
+		TwitterFactory tf = new TwitterFactory(cb.build());
+		Twitter twitter = tf.getInstance();
+		String statusMessage;		
+				
+		try {
+			File file = new File("C:/Users/Julio/workspace/github/Onda/Text1.jpg");
+			statusMessage = ("En 5 minutos va a resucitar alguien de entre los muertos!");
+			StatusUpdate status = new StatusUpdate(statusMessage);
+			status.setMedia(file);
+			twitter.updateStatus(status);
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void twitterResucita(String resucitado){
+//		String consumerKey = "OXd5oPvVPhXqE1i856SZSeZ9R";
+//		String consumerSecret = "XRT9sdX4Q35wNGDIwRSX5QrMcjPqrm5lUIS6jJvNeDKyAOAQ0g";
+//		String accessToken = "1149316675877167104-ZIOKZAH7SZ361PVsGTMucFDh11xk9v";
+//		String accessTokenSecret = "2kvJHQ2uwPFro5ZBlw1bu2J7UGJnpWSMkhogmbrYu2u6J";
+		
+		String consumerKey = "KdpN6MZxxQy1dKbQPOuruSfxT";
+		String consumerSecret = "Zw2FfKtbZqzjIcWebiAG0rDPkXkczplpg7ojHUHifI7J3dnI68";
+		String accessToken = "1151775525062479872-WrvedHQYmQIDlag9o9ZvjCqPTHtJG5";
+		String accessTokenSecret = "Ux4PobRTXL5j7meKdEhaFElAVlzJN8KxZI1qreBA2u4wp";
+		
+		ConfigurationBuilder cb = new ConfigurationBuilder();
+		cb.setDebugEnabled(true).setOAuthConsumerKey(consumerKey).setOAuthConsumerSecret(consumerSecret)
+				.setOAuthAccessToken(accessToken).setOAuthAccessTokenSecret(accessTokenSecret);
+		TwitterFactory tf = new TwitterFactory(cb.build());
+		Twitter twitter = tf.getInstance();
+		
+		String statusMessage;
+		String xt = mape.get(resucitado);	
+		if (xt==null)xt="";
+		try {
+			File file = new File("C:/Users/Julio/workspace/github/Onda/Text1.jpg");
+			statusMessage = (resucitado + " " + xt + " ha resucitado de entre los muertos!");
+			StatusUpdate status = new StatusUpdate(statusMessage);
+			status.setMedia(file);
+			twitter.updateStatus(status);
+//			twitter.updateStatus(resucitado + " " + xt + " ha resucitado de entre los muertos!");
+		} catch (TwitterException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	
 	public static String[] listaDeNombres(Map<String,String> lista){ //metodo que genera los nombres a partir del Map
@@ -380,7 +543,36 @@ public class Tarea extends TimerTask{
 	    FontMetrics fm = g2d.getFontMetrics();
 //	    int width = fm.stringWidth(text);
 //	    int height = fm.getHeight();
-	    if(nombres.length>=20){
+	    if(nombres.length>100){
+	    	int width = 685;
+		    int height = 365;
+		    g2d.dispose();
+
+		    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
+		    g2d = img.createGraphics();
+		    g2d.setFont(font);
+		    fm = g2d.getFontMetrics();
+		    
+		    g2d.setColor(Color.WHITE);
+		    g2d.setBackground(Color.WHITE);
+		    
+		    
+		    int i = 0;
+		    for(int k=1; k<=25; k++){
+		    	if(i==nombres.length)break;
+		    	g2d.drawString(nombres[i],5, k*15);
+		        i++;
+		        
+		        for(int l=1; l<6; l++){
+		        	if(i==nombres.length)break;
+		        	g2d.drawString(nombres[i], l*115, k*15);
+		            i++;
+		        }
+//		        g2d.fillRect(x, y, width, height);
+		        ImageIO.write(img, "jpg", new File("Text1.jpg"));
+		    }
+	    } 
+	    else if(nombres.length>=20){
 	    int width = 555;
 	    int height = 305;
 	    g2d.dispose();
@@ -397,7 +589,7 @@ public class Tarea extends TimerTask{
 	    int i = 0;
 	    for(int k=1; k<=20; k++){
 	    	if(i==nombres.length)break;
-	    	g2d.drawString(nombres[i],10, k*15);
+	    	g2d.drawString(nombres[i],5, k*15);
 	        i++;
 	        
 	        for(int l=1; l<5; l++){
@@ -407,7 +599,7 @@ public class Tarea extends TimerTask{
 	            
 	        }
 //	        g2d.fillRect(x, y, width, height);
-	        ImageIO.write(img, "jpg", new File("Text.jpg"));
+	        ImageIO.write(img, "jpg", new File("Text1.jpg"));
 	    }
 	}
 	    else if (nombres.length > 12){
@@ -427,7 +619,7 @@ public class Tarea extends TimerTask{
 		    int i = 0;
 		    for(int k=1; k<=5; k++){
 		    	if(i==nombres.length)break;
-		    	g2d.drawString(nombres[i],10, k*15);
+		    	g2d.drawString(nombres[i],5, k*15);
 		        i++;
 		        
 		        for(int l=1; l<4; l++){
@@ -437,7 +629,7 @@ public class Tarea extends TimerTask{
 		            
 		        }
 //		        g2d.fillRect(x, y, width, height);
-		        ImageIO.write(img, "jpg", new File("Text.jpg"));
+		        ImageIO.write(img, "jpg", new File("Text1.jpg"));
 	    }
 	}
 	    else{
@@ -457,7 +649,7 @@ public class Tarea extends TimerTask{
 			    int i = 0;
 			    for(int k=1; k<=5; k++){
 			    	if(i==nombres.length)break;
-			    	g2d.drawString(nombres[i],10, k*15);
+			    	g2d.drawString(nombres[i],5, k*15);
 			        i++;
 			        
 			        for(int l=1; l<3; l++){
@@ -467,7 +659,7 @@ public class Tarea extends TimerTask{
 			            
 			        }
 //			        g2d.fillRect(x, y, width, height);
-			        ImageIO.write(img, "jpg", new File("Text.jpg"));
+			        ImageIO.write(img, "jpg", new File("Text1.jpg"));
 		    }
 	    	
 	    }
@@ -488,7 +680,7 @@ public class Tarea extends TimerTask{
 	 public static boolean resucitar() //metodo que dice si alguien va a resucitar en esta hora
 	 {
 	   boolean resucita;
-	   if (Math.random() <= 0.03) {//3% de probabilidad de que alguien resucite
+	   if (Math.random() <= 0.2) {//3% de probabilidad de que alguien resucite
 	     resucita = true; 
 	   }
 	   else {    
@@ -496,4 +688,20 @@ public class Tarea extends TimerTask{
 	   }
 	   return resucita;
 	 }
+	 
+	 public static String[] haResucitado(String[] lista, String muerto){ //metodo que genera los nombres a partir del Map
+//		 String[] aux  = new String[200];
+//		for(int i = 0; i<muertos.length; i++){
+//			aux[i]=muertos[i];
+//		}
+//		aux[muertos.length] = muerto;
+////		Arrays.sort(aux);
+//		return aux;
+		 
+		 ArrayList<String> myList = new ArrayList<String>(Arrays.asList(lista));
+		 myList.add(muerto);
+		 lista = myList.toArray(lista);
+		 Arrays.sort(lista);
+		 return lista;
+		}
 }

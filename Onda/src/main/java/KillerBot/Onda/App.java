@@ -1,5 +1,8 @@
 package KillerBot.Onda;
+import java.util.Date;
 import java.util.Timer;
+import java.util.concurrent.TimeUnit;
+
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
@@ -17,8 +20,18 @@ public class App
     {
     	
     	Timer temp = new Timer();
-    	temp.schedule(new Tarea(), 0, 10000);
-//    	temp.schedule(new Tarea(), firstTime, period);
+    	Date fecha = new Date();
+//    	int hora = fecha.getHours();
+    	int minuto = fecha.getMinutes();
+    	int delay = (55-minuto)*60000;
+//    	
+//    	if(hora==3){
+    		temp.schedule(new Tarea(), delay, 3600000);
+//    	}else{
+//    		temp.schedule(new Tarea(), delay, 5);
+//    	}
+    	
+    	//    	temp.schedule(new Tarea(), firstTime, period);
 //    	while (nombres.length > 1){
 //			nombres = duelo(nombres);
 			
