@@ -33,7 +33,7 @@ public class Tarea extends TimerTask{
 	String[] nombres = new String[200]; //lista de los que estan vivos (nombres), muertos y formas de morir y lugares
 	List<String> muertos = new ArrayList<String>();
 	Date fecha = new Date();
-	int hora = fecha.getHours();
+	int hora;
 	static String[] muertes = {" le ha metido una puñalada por la espalda", " le ha dado un cubata envenenado", " ha atropellado con el coche", 
 						" ha matado con un palo", " le ha metido 20 navajazos en el pecho", " le ha dado una paliza", " le ha dado un botellazo en la cabeza", " ha asfixiado mientras dormía",
 						" ha matado por exceso de sexo", " ha matado de un susto", " ha descuartizado y enterrado",
@@ -58,160 +58,168 @@ public class Tarea extends TimerTask{
     
 
 	public Tarea(){
-//		mape.put("Julio Perez", "@julio_vcf");
-//		mape.put("Nekane Iserte", "@Nekaneiserte10");
-//		mape.put("Pedro Berrocal", "@pedrorck16");
-//		mape.put("Rafa Perez", "@rafetaonda");
-//		mape.put("Fernando Villegas", "@fernando_RCK");
-//		mape.put("Raquel Rubio", "");
-//		mape.put("Claudia Catalan", "@catalanclaudia9");
-//		mape.put("Roger Mondragon", "@rogerrmc17");
-//		mape.put("Sergio Castillo", "@Sergio35444057");
-//		mape.put("Marta Fores", "@mforesinsa");
-//		mape.put("Salva Cabedo", "@Cabedo_17");
-//		mape.put("Claudia Moya", "@claudiamoya1999");
-//		mape.put("Mireia Marti", "@Miireiaa20");
-//		mape.put("Anna Marco", "@AnnaMarco01");
-//		mape.put("Juan Vives", "@Juuan92");
-//		mape.put("Cristina Blazquez", "@crisblazquez98");
-//		mape.put("Yael Huget", "@yaelhm10");
-//		mape.put("Cristina Gallego", "@crisgallego99");
-//		mape.put("Andrada Huzsa", "@andradahz");
-//		mape.put("Mousin", null);
-//		mape.put("Reyes Peris", "@reyesnlx");
-//		mape.put("Mark Garcia", "@mark_RCK"); //22
-//		mape.put("Nacho Davila", "@NachettoXx");
-//		mape.put("Susana Garcia", "@SusanaGarcia99");
-//		mape.put("Carlos Cruz", "@CarlosRck");
-//		mape.put("Raquel Rubio", "@racrubio14");
-//		mape.put("Camila Ortiz", "@CamilaCastano25");
-//		mape.put("Darlyn Jose", "@DARLYN_RCK");
-//		mape.put("Juanjo Herrero", "@juanjoo_rck");
-//		mape.put("Josep Gomez", "@Pajo_9");
-//		mape.put("Nuria Piquer", "@2299Nuria");
-//		mape.put("Emilo Feliu", "@emiliofeliu");
-//		mape.put("Nacho Hernandez", "@_nachogym");
-//		mape.put("Denis Valentin", "@Denis10Valentin");
-//		mape.put("Alba Sorní", "@albaOnda");
-//		mape.put("Aitana Julve", "@Aitanajulve");
-//		mape.put("Anna Castillo", "@annacastillo99");
-//		mape.put("Ainoa Martinez", "@Ainoaa_11");
-//		mape.put("Elena Blanco", "@Elena_Nlx");
-//		mape.put("Javi Garcia", "@javi_mas14");
-//		mape.put("Sara Chorda", "@SaraChorda_99"); //41
-//		mape.put("Jordi Muñoz", "@Marsaleta_");
-//		mape.put("Vicente Varella", "@VicenVD");
-//		mape.put("Alex Molina", "@Aleex_molinaa");
-//		mape.put("Vicente Muñoz", "@Vicentemg97");//45
-//		mape.put("Ivan Caparros", "@Ivancaparros21");
-//		mape.put("Laura Ortiz", "@lau_dsn");
-//		mape.put("Lluna Mir", "@llu_knx");
-//		mape.put("Javier Vicent", "@javivicent97");
-//		mape.put("Lluis Castañ", "@lluiscasfer");//50
-//		mape.put("Clara Chiva", "@ClaraChiva");
-//		mape.put("Paula Lucena", "@_paulalucena_");
-//		mape.put("Claudia Gimeno", "@ClauSLP3");
-//		mape.put("Jorge Ten", "@jorgeten10");
-//		mape.put("Carmina Franch", "@carmina_est");//55
-//		mape.put("Naxo Leon", "@naxo_rck");
-//		mape.put("Ivan Reboll", "@IvanReboll");
-//		mape.put("Eric Sansano", "@Eric_sansano8");
-//		mape.put("David Gomez", "@96davidgomez");
-//		mape.put("Roberto Martinez", "@RobertoRck");//60
-//		mape.put("Eric Cervello", "@cerve_rck");
-//		mape.put("Ximo Alós", "@AlosXimo");
-//		mape.put("Aida Fernandez", "@aiidafernandez");
-//		mape.put("Juanjo Piquer", "@juanjopiquer21");
-//		mape.put("Andrea Cruzado", "@andreacruzaado");//65
-//		mape.put("Yeray Boix", "@MrBoixCoix");
-//		mape.put("Andrea Benages", "@andreabenages");
-//		mape.put("Carmen Mallen", "@Carmen_Mallen");
-//		mape.put("Maria Ortells", "@Maria_Ortells17");
-//		mape.put("Ines Gea", "@ineesgea");//70
-//		mape.put("Iris Perez", "@iris_pv13");
-//		mape.put("Paula Piquer", "@paula_piquer_");
-//		mape.put("Lucia Romero", "@Lu_romero98");
-//		mape.put("Adrian Guillamon", "@adri_guillamon");
-//		mape.put("Lidia Soler", "@lidiasoler1");
-//		mape.put("Sandra Muñoz", "@sandrita_est");
-//		mape.put("Enric Borrás", "@EnricBR10");
-//		mape.put("Nuria Garcia", "@ngarciamas");
-//		mape.put("Sara Martinez", "@sara_mt12");
-//		mape.put("Aiman", "@aimanrbs17"); //80
-//		mape.put("Elena Moya", "@elenyclau24");
-//		mape.put("Esther Vicent", "@esthervicent");
-//		mape.put("Aida Escudero", "@Aida878");
-//		mape.put("Sonia Belmonte", "@sonia_slp");
-//		mape.put("Laia Solsona", "@Laia_sg_99");//85
-//		mape.put("Carlos Ruiz", "@Carlos_RM00");
-//		mape.put("M.Sánchez", "@__migueliko__");
-//		mape.put("Roberto Lozar", "@robertolozar");
-//		mape.put("David Alarcon", "@Dave_Alarcon");
-//		mape.put("Eva Badenes", "@evabadenes05");
-//		mape.put("Ruben Segura", "@rubensegura98");
-//		mape.put("El Churro", null);
-//		mape.put("Ester Jimenez", "@ester_nlx");
-//		mape.put("Franciso Hurtado", "@hurtado9296");
-//		mape.put("Sara Guirau", "@Sarag01_");
-//		mape.put("Rafa Palanques", "@rafa_palanques");
-//		mape.put("Pau Colonques", "@PauColonques");
-//		mape.put("Elena Huertas", "@EleenaknxOnda");
-//		mape.put("Javier Hurtado", "@hurtadazo5");
-//		mape.put("Andrea Ruiz", "@andrearuizz15");
-//		mape.put("Maria Esteller", "@mariaestellerf");
-//		mape.put("Carlos Mas", "@carlos_rpk");
-//		mape.put("Eva Martinez", "@evinlx99");
-//		mape.put("Raquel Mezquita", "@raquel_mezquita");
-//		mape.put("Juan Pa Ortiz", "@Juanpa_kls");
-//		mape.put("Maria Gallego","@maria_galleg0");
-//		mape.put("Panadero","@panaderoentask");
-//		mape.put("Esther Fernández","@estiwifdez");
-//		mape.put("Javi Olucha","@JaviOlucha");
-//		mape.put("Nuria Aguilella","@NuriaAguilella");
-//		mape.put("Paula Gallen","@paulagpoles99");
-//		mape.put("Patricia Albalat","@patrialbalat20");
-//		mape.put("Raúl Cruzado","@cruzadoaltk");
-//		mape.put("Beatriz Castillo", "@beatrixcastle");
-//		mape.put("Juan Melero", "@Melero_2000");
-//		mape.put("Lydia Vicent", "@lydiavicent_");
-//		mape.put("María Zapata", "@meery_zapata");
-//		mape.put("Belen Cabedo", "@snakkkkke");
-//		mape.put("Patricia Albalat", "@patrialbalat20");
-//		mape.put("Luis Castillo", "@Luis12Castillo");
-//		mape.put("Sara Usó", "@sarauso02");
-//		mape.put("Laura Castelló","@Laura15castello");
-//		mape.put("Jorge Chaume", "@JorgeChaume");
-//		mape.put("Paula Viñes", "@PaulaVC00");
-//		mape.put("Carmen Guillamon", "@Cg_carmen_00");
-//		mape.put("María Martinez", "@mariamartt01");
-//		mape.put("Mireia Cervello", "@mireiacerve08");
-//		mape.put("Gaizka Ojeda", "@gaizzka07");
-//		mape.put("Samuel Toledo", "@SamuToledo4");
-//		mape.put("Carla Asensio", "@alracoisnesa");
-//		mape.put("Pablo Martínez", "@Pablomb10_");
-//		mape.put("Merche Sanchez", "@merche_msm");
-//		mape.put("María Gil", "@Mariaruiizg_");
-//		mape.put("Iris Valero", "@iirisvm");
-//		mape.put("Rubén Castillo", "@Rubenikas99");
-//		mape.put("Ángela Sebastián", "@Angela_12200");
-//		mape.put("Rubén Marco", "@rubenmarco_10");
-//		mape.put("Carla Feliu", "@carla_feliu");
-//		mape.put("Adrián Feliu", "@Adrian_Feliu");
-//		mape.put("Nacho Ribes", "@nachoribess");
-//		mape.put("Lucia Benages", "@luciabenages");
-//		mape.put("Victor García", "@garcia_victor00");
-//		mape.put("Rubén Marco", "@rubenmarco_10");
-//		mape.put("Jose Montiel", "@josma100");
-//		mape.put("", "");
+		mape.put("Julio Perez", "@julio_vcf");
+		mape.put("Nekane Iserte", "@Nekaneiserte10");
+		mape.put("Pedro Berrocal", "@pedrorck16");
+		mape.put("Rafa Perez", "@rafetaonda");
+		mape.put("Fernando Villegas", "@fernando_RCK");
+		mape.put("Raquel Rubio", "");
+		mape.put("Claudia Catalan", "@catalanclaudia9");
+		mape.put("Roger Mondragon", "@rogerrmc17");
+		mape.put("Sergio Castillo", "@Sergio35444057");
+		mape.put("Marta Fores", "@mforesinsa");
+		mape.put("Salva Cabedo", "@Cabedo_17");
+		mape.put("Claudia Moya", "@claudiamoya1999");
+		mape.put("Mireia Marti", "@Miireiaa20");
+		mape.put("Anna Marco", "@AnnaMarco01");
+		mape.put("Juan Vives", "@Juuan92");
+		mape.put("Cristina Blazquez", "@crisblazquez98");
+		mape.put("Yael Huget", "@yaelhm10");
+		mape.put("Cristina Gallego", "@crisgallego99");
+		mape.put("Andrada Huzsa", "@andradahz");
+		mape.put("Mousin", null);
+		mape.put("Reyes Peris", "@reyesnlx");
+		mape.put("Mark Garcia", "@mark_RCK"); //22
+		mape.put("Nacho Davila", "@NachettoXx");
+		mape.put("Susana Garcia", "@SusanaGarcia99");
+		mape.put("Carlos Cruz", "@CarlosRck");
+		mape.put("Raquel Rubio", "@racrubio14");
+		mape.put("Camila Ortiz", "@CamilaCastano25");
+		mape.put("Darlyn Jose", "@DARLYN_RCK");
+		mape.put("Juanjo Herrero", "@juanjoo_rck");
+		mape.put("Josep Gomez", "@Pajo_9");
+		mape.put("Nuria Piquer", "@2299Nuria");
+		mape.put("Emilo Feliu", "@emiliofeliu");
+		mape.put("Nacho Hernandez", "@_nachogym");
+		mape.put("Denis Valentin", "@Denis10Valentin");
+		mape.put("Alba Sorní", "@albaOnda");
+		mape.put("Aitana Julve", "@Aitanajulve");
+		mape.put("Anna Castillo", "@annacastillo99");
+		mape.put("Ainoa Martinez", "@Ainoaa_11");
+		mape.put("Elena Blanco", "@Elena_Nlx");
+		mape.put("Javi Garcia", "@javi_mas14");
+		mape.put("Sara Chorda", "@SaraChorda_99"); //41
+		mape.put("Jordi Muñoz", "@Marsaleta_");
+		mape.put("Vicente Varella", "@VicenVD");
+		mape.put("Alex Molina", "@Aleex_molinaa");
+		mape.put("Vicente Muñoz", "@Vicentemg97");//45
+		mape.put("Ivan Caparros", "@Ivancaparros21");
+		mape.put("Laura Ortiz", "@lau_dsn");
+		mape.put("Lluna Mir", "@llu_knx");
+		mape.put("Javier Vicent", "@javivicent97");
+		mape.put("Lluis Castañ", "@lluiscasfer");//50
+		mape.put("Clara Chiva", "@ClaraChiva");
+		mape.put("Paula Lucena", "@_paulalucena_");
+		mape.put("Claudia Gimeno", "@ClauSLP3");
+		mape.put("Jorge Ten", "@jorgeten10");
+		mape.put("Carmina Franch", "@carmina_est");//55
+		mape.put("Naxo Leon", "@naxo_rck");
+		mape.put("Ivan Reboll", "@IvanReboll");
+		mape.put("Eric Sansano", "@Eric_sansano8");
+		mape.put("David Gomez", "@96davidgomez");
+		mape.put("Roberto Martinez", "@RobertoRck");//60
+		mape.put("Eric Cervello", "@cerve_rck");
+		mape.put("Ximo Alós", "@AlosXimo");
+		mape.put("Aida Fernandez", "@aiidafernandez");
+		mape.put("Juanjo Piquer", "@juanjopiquer21");
+		mape.put("Andrea Cruzado", "@andreacruzaado");//65
+		mape.put("Yeray Boix", "@MrBoixCoix");
+		mape.put("Andrea Benages", "@andreabenages");
+		mape.put("Carmen Mallen", "@Carmen_Mallen");
+		mape.put("Maria Ortells", "@Maria_Ortells17");
+		mape.put("Ines Gea", "@ineesgea");//70
+		mape.put("Iris Perez", "@iris_pv13");
+		mape.put("Paula Piquer", "@paula_piquer_");
+		mape.put("Lucia Romero", "@Lu_romero98");
+		mape.put("Adrian Guillamon", "@adri_guillamon");
+		mape.put("Lidia Soler", "@lidiasoler1");
+		mape.put("Sandra Muñoz", "@sandrita_est");
+		mape.put("Enric Borrás", "@EnricBR10");
+		mape.put("Nuria Garcia", "@ngarciamas");
+		mape.put("Sara Martinez", "@sara_mt12");
+		mape.put("Aiman", "@aimanrbs17"); //80
+		mape.put("Elena Moya", "@elenyclau24");
+		mape.put("Esther Vicent", "@esthervicent");
+		mape.put("Aida Escudero", "@Aida878");
+		mape.put("Sonia Belmonte", "@sonia_slp");
+		mape.put("Laia Solsona", "@Laia_sg_99");//85
+		mape.put("Carlos Ruiz", "@Carlos_RM00");
+		mape.put("M.Sánchez", "@__migueliko__");
+		mape.put("Roberto Lozar", "@robertolozar");
+		mape.put("David Alarcon", "@Dave_Alarcon");
+		mape.put("Eva Badenes", "@evabadenes05");
+		mape.put("Ruben Segura", "@rubensegura98");
+		mape.put("El Churro", null);
+		mape.put("Ester Jimenez", "@ester_nlx");
+		mape.put("Franciso Hurtado", "@hurtado9296");
+		mape.put("Sara Guirau", "@Sarag01_");
+		mape.put("Rafa Palanques", "@rafa_palanques");
+		mape.put("Pau Colonques", "@PauColonques");
+		mape.put("Elena Huertas", "@EleenaknxOnda");
+		mape.put("Javier Hurtado", "@hurtadazo5");
+		mape.put("Andrea Ruiz", "@andrearuizz15");
+		mape.put("Maria Esteller", "@mariaestellerf");
+		mape.put("Carlos Mas", "@carlos_rpk");
+		mape.put("Eva Martinez", "@evinlx99");
+		mape.put("Raquel Mezquita", "@raquel_mezquita");
+		mape.put("Juan Pa Ortiz", "@Juanpa_kls");
+		mape.put("Maria Gallego","@maria_galleg0");
+		mape.put("Panadero","@panaderoentask");
+		mape.put("Esther Fernández","@estiwifdez");
+		mape.put("Javi Olucha","@JaviOlucha");
+		mape.put("Nuria Aguilella","@NuriaAguilella");
+		mape.put("Paula Gallen","@paulagpoles99");
+		mape.put("Patricia Albalat","@patrialbalat20");
+		mape.put("Raúl Cruzado","@cruzadoaltk");
+		mape.put("Beatriz Castillo", "@beatrixcastle");
+		mape.put("Juan Melero", "@Melero_2000");
+		mape.put("Lydia Vicent", "@lydiavicent_");
+		mape.put("María Zapata", "@meery_zapata");
+		mape.put("Belen Cabedo", "@snakkkkke");
+		mape.put("Patricia Albalat", "@patrialbalat20");
+		mape.put("Luis Castillo", "@Luis12Castillo");
+		mape.put("Sara Usó", "@sarauso02");
+		mape.put("Laura Castelló","@Laura15castello");
+		mape.put("Jorge Chaume", "@JorgeChaume");
+		mape.put("Paula Viñes", "@PaulaVC00");
+		mape.put("Carmen Guillamon", "@Cg_carmen_00");
+		mape.put("María Martinez", "@mariamartt01");
+		mape.put("Mireia Cervello", "@mireiacerve08");
+		mape.put("Gaizka Ojeda", "@gaizzka07");
+		mape.put("Samuel Toledo", "@SamuToledo4");
+		mape.put("Carla Asensio", "@alracoisnesa");
+		mape.put("Pablo Martínez", "@Pablomb10_");
+		mape.put("Merche Sanchez", "@merche_msm");
+		mape.put("María Gil", "@Mariaruiizg_");
+		mape.put("Iris Valero", "@iirisvm");
+		mape.put("Rubén Castillo", "@Rubenikas99");
+		mape.put("Angela Sebastián", "@Angela_12200");
+		mape.put("Rubén Marco", "@rubenmarco_10");
+		mape.put("Carla Feliu", "@carla_feliu");
+		mape.put("Adrián Feliu", "@Adrian_Feliu");
+		mape.put("Nacho Ribes", "@nachoribess");
+		mape.put("Lucia Benages", "@luciabenages");
+		mape.put("Victor García", "@garcia_victor00");
+		mape.put("Rubén Marco", "@rubenmarco_10");
+		mape.put("Jose Montiel", "@josma100");
+		mape.put("Paloma Muñoz", "@paloma_munyoz");
+		mape.put("Juan Silvestre", "@Juansilvestree");
+		mape.put("Elián Contreras", "@elianco84460590");
+		mape.put("Maria Fabregat", "@Maria_F200");
+		mape.put("Ana Ibañez", "@AniitaI2001");
+		mape.put("M. Angel Cruz", "@mixi_sfk");
+		mape.put("Manu Garrido", "@Manusofok");
+		mape.put("Marina Seco", "@MarinaSeco");
+		mape.put("Sergio Juarez", "@SergioJuarez10");
 		
 
-		mape.put("Juliio Perez", "julio_vcf");
-		mape.put("Nekkane Iserte", null);
-		mape.put("Pedrro Berrocal", null);
-		mape.put("Raffa Perez", null);
-		mape.put("Ferrnando Villegas", "fernando_RCK");
-		mape.put("Annna Romero", "anna_romero9");
-		mape.put("Clauudia Catalan", "catalanclaudia9");
+//		mape.put("Juliio Perez", "julio_vcf");
+//		mape.put("Nekkane Iserte", null);
+//		mape.put("Pedrro Berrocal", null);
+//		mape.put("Raffa Perez", null);
+//		mape.put("Ferrnando Villegas", "fernando_RCK");
+//		mape.put("Annna Romero", "anna_romero9");
+//		mape.put("Clauudia Catalan", "catalanclaudia9");
 		
 //		muertos.add("Evaristo");
 //		muertos.add("Matias");
@@ -227,29 +235,30 @@ public class Tarea extends TimerTask{
 	}
 	@Override
 	public void run() {
-//		try {
-//			crearImagen(nombres);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block					/*Con esto creo la primera imagen cuando voy a empezar*/
-//			e.printStackTrace();
-//		} 
-		if(hora==12||hora==13||hora==5||hora==6){
-			System.out.println("Estoy durmiendo porque son las " + hora);
-		}
-		else{
-			if(resucitar()==true){
-			if(muertos.isEmpty()){duelo(nombres);}
-				resurreccion(nombres, muertos);
-		} else{
-			duelo(nombres);
-		}		
-			if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
-			cancel();
-			}
-		}
-
-//			System.out.println(nombres.length);
+		try {
+			crearImagen(nombres);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block					/*Con esto creo la primera imagen cuando voy a empezar*/
+			e.printStackTrace();
+		} 
+//		hora = fecha.getHours();
+//		if(hora==2||hora==3||hora==4||hora==5){
+//			System.out.println("Estoy durmiendo porque son las " + hora);
+//		}
+//		else{
+//			if(resucitar()==true){
+//			if(muertos.isEmpty()){duelo(nombres);}
+//				resurreccion(nombres, muertos);
+//		} else{
+//			duelo(nombres);
+//		}		
+//			if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
 //			cancel();
+//			}
+//		}
+
+			System.out.println(nombres.length);
+			cancel();
 //		}
 	
 	} 
@@ -343,12 +352,12 @@ public class Tarea extends TimerTask{
 		String resucitado = muert.get(n); 	//coge al elegido
 		nombres = haResucitado(vivos,resucitado); 		//lo resucita y quita de la lista de muertos
 		muertos.remove(resucitado);
-		try {
-			crearImagen(nombres);		//creamos la imagen con los muertos
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			crearImagen(nombres);		//creamos la imagen con los muertos
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		System.out.println(resucitado + " ha resucitado!");
 	    twitterResucita(resucitado);		//lo anuncia en twitter
 		
@@ -545,7 +554,7 @@ public class Tarea extends TimerTask{
 //	    int height = fm.getHeight();
 	    if(nombres.length>100){
 	    	int width = 685;
-		    int height = 365;
+		    int height = 380;
 		    g2d.dispose();
 
 		    img = new BufferedImage(width, height, BufferedImage.TYPE_INT_BGR);
