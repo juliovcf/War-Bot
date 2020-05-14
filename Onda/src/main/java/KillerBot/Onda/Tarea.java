@@ -34,15 +34,15 @@ public class Tarea extends TimerTask{
 	List<String> muertos = new ArrayList<String>();
 	Date fecha = new Date();
 	int hora;
-	static String[] muertes = {" le ha metido una puÒalada por la espalda", " le ha dado un cubata envenenado", " ha atropellado con el coche", 
-						" ha matado con un palo", " le ha metido 20 navajazos en el pecho", " le ha dado una paliza", " le ha dado un botellazo en la cabeza", " ha asfixiado mientras dormÌa",
+	static String[] muertes = {" le ha metido una pu√±alada por la espalda", " le ha dado un cubata envenenado", " ha atropellado con el coche", 
+						" ha matado con un palo", " le ha metido 20 navajazos en el pecho", " le ha dado una paliza", " le ha dado un botellazo en la cabeza", " ha asfixiado mientras dorm√≠a",
 						" ha matado por exceso de sexo", " ha matado de un susto", " ha descuartizado y enterrado",
 						" le ha reventado la cabeza con un bate", " le ha comido la cara", " ha matado de asco", " se ha comido",
 						" ha hecho cosquillas hasta matar", " ha prendido fuego", " ha enterrado vivo", " ha arrancado la piel a tiras",
-						" le ha metido un escopetazo", " sentÌa demasiada envidia y ha matado", " querÌa probar su nuevo revolver y ha disparado",
+						" le ha metido un escopetazo", " sent√≠a demasiada envidia y ha matado", " quer√≠a probar su nuevo revolver y ha disparado",
 						" le ha metido una patada voladora", " le ha partido el cuello", " ha empalado",
 						" le ha partido las piernas", " ha hecho un sacrificio a sus dioses quemando", " se ha tirado tal pedo que ha matado",
-						" ha invitado a chupitos de Jaggermeister, y ha hecho que le de un coma etilico", " querÌa probar sus nuevos masclets y se los ha metido por el culo",
+						" ha invitado a chupitos de Jaggermeister, y ha hecho que le de un coma etilico", " quer√≠a probar sus nuevos masclets y se los ha metido por el culo",
 						" le ha puesto una bomba en el coche", " allahu akbar", " ha torturado hasta la muerte", " ha ahogado", " ha estrangulado",
 						" ha matado con su belleza", " es tan feo que ha matado al mirar", " le ha perreado hasta morir", " ha asfixiado de un abrazo",
 						" le ha metido una barra de fuet hasta la traquea", " le ha metido un flechazo en el ojo", " ha ayudado a ahorcarse",
@@ -53,7 +53,7 @@ public class Tarea extends TimerTask{
 	static String[] lugares = {" en el Mercadona"," en el Castillo", " debajo un punte", " en el museo del Taulell", " en el instituto",
 						" en el Salvador", " en el calvario", " en los Carmelitas", " en la piazzeta", " en las 3 Culturas", " en su casa", " volviendo de Artesa",
 						" en las fiestas de su pueblo", " en la Moreria", " en la Font de Dins", " en su casal", " durante Fira D'Onda", 
-						" en el ecoparque", " por un ajuste de cuentas", " en la Panderola", " en la Plaza EspaÒa", " en el encierro", " en su sotano",
+						" en el ecoparque", " por un ajuste de cuentas", " en la Panderola", " en la Plaza Espa√±a", " en el encierro", " en su sotano",
 						" mientras bebian juntos", " por hereje", " por capull@", " por borrach@", " en la plaza del pueblo", " por empanao", " por pesao"};
     
 
@@ -92,22 +92,22 @@ public class Tarea extends TimerTask{
 		mape.put("Emilo Feliu", "@emiliofeliu");
 		mape.put("Nacho Hernandez", "@_nachogym");
 		mape.put("Denis Valentin", "@Denis10Valentin");
-		mape.put("Alba SornÌ", "@albaOnda");
+		mape.put("Alba Sorn√≠", "@albaOnda");
 		mape.put("Aitana Julve", "@Aitanajulve");
 		mape.put("Anna Castillo", "@annacastillo99");
 		mape.put("Ainoa Martinez", "@Ainoaa_11");
 		mape.put("Elena Blanco", "@Elena_Nlx");
 		mape.put("Javi Garcia", "@javi_mas14");
 		mape.put("Sara Chorda", "@SaraChorda_99"); //41
-		mape.put("Jordi MuÒoz", "@Marsaleta_");
+		mape.put("Jordi Mu√±oz", "@Marsaleta_");
 		mape.put("Vicente Varella", "@VicenVD");
 		mape.put("Alex Molina", "@Aleex_molinaa");
-		mape.put("Vicente MuÒoz", "@Vicentemg97");//45
+		mape.put("Vicente Mu√±oz", "@Vicentemg97");//45
 		mape.put("Ivan Caparros", "@Ivancaparros21");
 		mape.put("Laura Ortiz", "@lau_dsn");
 		mape.put("Lluna Mir", "@llu_knx");
 		mape.put("Javier Vicent", "@javivicent97");
-		mape.put("Lluis CastaÒ", "@lluiscasfer");//50
+		mape.put("Lluis Casta√±", "@lluiscasfer");//50
 		mape.put("Clara Chiva", "@ClaraChiva");
 		mape.put("Paula Lucena", "@_paulalucena_");
 		mape.put("Claudia Gimeno", "@ClauSLP3");
@@ -119,7 +119,7 @@ public class Tarea extends TimerTask{
 		mape.put("David Gomez", "@96davidgomez");
 		mape.put("Roberto Martinez", "@RobertoRck");//60
 		mape.put("Eric Cervello", "@cerve_rck");
-		mape.put("Ximo AlÛs", "@AlosXimo");
+		mape.put("Ximo Al√≥s", "@AlosXimo");
 		mape.put("Aida Fernandez", "@aiidafernandez");
 		mape.put("Juanjo Piquer", "@juanjopiquer21");
 		mape.put("Andrea Cruzado", "@andreacruzaado");//65
@@ -133,8 +133,8 @@ public class Tarea extends TimerTask{
 		mape.put("Lucia Romero", "@Lu_romero98");
 		mape.put("Adrian Guillamon", "@adri_guillamon");
 		mape.put("Lidia Soler", "@lidiasoler1");
-		mape.put("Sandra MuÒoz", "@sandrita_est");
-		mape.put("Enric Borr·s", "@EnricBR10");
+		mape.put("Sandra Mu√±oz", "@sandrita_est");
+		mape.put("Enric Borr√°s", "@EnricBR10");
 		mape.put("Nuria Garcia", "@ngarciamas");
 		mape.put("Sara Martinez", "@sara_mt12");
 		mape.put("Aiman", "@aimanrbs17"); //80
@@ -144,7 +144,7 @@ public class Tarea extends TimerTask{
 		mape.put("Sonia Belmonte", "@sonia_slp");
 		mape.put("Laia Solsona", "@Laia_sg_99");//85
 		mape.put("Carlos Ruiz", "@Carlos_RM00");
-		mape.put("M.S·nchez", "@__migueliko__");
+		mape.put("M.S√°nchez", "@__migueliko__");
 		mape.put("Roberto Lozar", "@robertolozar");
 		mape.put("David Alarcon", "@Dave_Alarcon");
 		mape.put("Eva Badenes", "@evabadenes05");
@@ -165,48 +165,48 @@ public class Tarea extends TimerTask{
 		mape.put("Juan Pa Ortiz", "@Juanpa_kls");
 		mape.put("Maria Gallego","@maria_galleg0");
 		mape.put("Panadero","@panaderoentask");
-		mape.put("Esther Fern·ndez","@estiwifdez");
+		mape.put("Esther Fern√°ndez","@estiwifdez");
 		mape.put("Javi Olucha","@JaviOlucha");
 		mape.put("Nuria Aguilella","@NuriaAguilella");
 		mape.put("Paula Gallen","@paulagpoles99");
 		mape.put("Patricia Albalat","@patrialbalat20");
-		mape.put("Ra˙l Cruzado","@cruzadoaltk");
+		mape.put("Ra√∫l Cruzado","@cruzadoaltk");
 		mape.put("Beatriz Castillo", "@beatrixcastle");
 		mape.put("Juan Melero", "@Melero_2000");
 		mape.put("Lydia Vicent", "@lydiavicent_");
-		mape.put("MarÌa Zapata", "@meery_zapata");
+		mape.put("Mar√≠a Zapata", "@meery_zapata");
 		mape.put("Belen Cabedo", "@snakkkkke");
 		mape.put("Patricia Albalat", "@patrialbalat20");
 		mape.put("Luis Castillo", "@Luis12Castillo");
-		mape.put("Sara UsÛ", "@sarauso02");
-		mape.put("Laura CastellÛ","@Laura15castello");
+		mape.put("Sara Us√≥", "@sarauso02");
+		mape.put("Laura Castell√≥","@Laura15castello");
 		mape.put("Jorge Chaume", "@JorgeChaume");
-		mape.put("Paula ViÒes", "@PaulaVC00");
+		mape.put("Paula Vi√±es", "@PaulaVC00");
 		mape.put("Carmen Guillamon", "@Cg_carmen_00");
-		mape.put("MarÌa Martinez", "@mariamartt01");
+		mape.put("Mar√≠a Martinez", "@mariamartt01");
 		mape.put("Mireia Cervello", "@mireiacerve08");
 		mape.put("Gaizka Ojeda", "@gaizzka07");
 		mape.put("Samuel Toledo", "@SamuToledo4");
 		mape.put("Carla Asensio", "@alracoisnesa");
-		mape.put("Pablo MartÌnez", "@Pablomb10_");
+		mape.put("Pablo Mart√≠nez", "@Pablomb10_");
 		mape.put("Merche Sanchez", "@merche_msm");
-		mape.put("MarÌa Gil", "@Mariaruiizg_");
+		mape.put("Mar√≠a Gil", "@Mariaruiizg_");
 		mape.put("Iris Valero", "@iirisvm");
-		mape.put("RubÈn Castillo", "@Rubenikas99");
-		mape.put("Angela Sebasti·n", "@Angela_12200");
-		mape.put("RubÈn Marco", "@rubenmarco_10");
+		mape.put("Rub√©n Castillo", "@Rubenikas99");
+		mape.put("Angela Sebasti√°n", "@Angela_12200");
+		mape.put("Rub√©n Marco", "@rubenmarco_10");
 		mape.put("Carla Feliu", "@carla_feliu");
-		mape.put("Adri·n Feliu", "@Adrian_Feliu");
+		mape.put("Adri√°n Feliu", "@Adrian_Feliu");
 		mape.put("Nacho Ribes", "@nachoribess");
 		mape.put("Lucia Benages", "@luciabenages");
-		mape.put("Victor GarcÌa", "@garcia_victor00");
-		mape.put("RubÈn Marco", "@rubenmarco_10");
+		mape.put("Victor Garc√≠a", "@garcia_victor00");
+		mape.put("Rub√©n Marco", "@rubenmarco_10");
 		mape.put("Jose Montiel", "@josma100");
-		mape.put("Paloma MuÒoz", "@paloma_munyoz");
+		mape.put("Paloma Mu√±oz", "@paloma_munyoz");
 		mape.put("Juan Silvestre", "@Juansilvestree");
-		mape.put("Eli·n Contreras", "@elianco84460590");
+		mape.put("Eli√°n Contreras", "@elianco84460590");
 		mape.put("Maria Fabregat", "@Maria_F200");
-		mape.put("Ana IbaÒez", "@AniitaI2001");
+		mape.put("Ana Iba√±ez", "@AniitaI2001");
 		mape.put("M. Angel Cruz", "@mixi_sfk");
 		mape.put("Manu Garrido", "@Manusofok");
 		mape.put("Marina Seco", "@MarinaSeco");
@@ -235,30 +235,30 @@ public class Tarea extends TimerTask{
 	}
 	@Override
 	public void run() {
-		try {
-			crearImagen(nombres);
-		} catch (IOException e) {
+//		try {
+//			crearImagen(nombres);
+//		} catch (IOException e) {
 			// TODO Auto-generated catch block					/*Con esto creo la primera imagen cuando voy a empezar*/
-			e.printStackTrace();
-		} 
-//		hora = fecha.getHours();
-//		if(hora==2||hora==3||hora==4||hora==5){
-//			System.out.println("Estoy durmiendo porque son las " + hora);
-//		}
-//		else{
-//			if(resucitar()==true){
-//			if(muertos.isEmpty()){duelo(nombres);}
-//				resurreccion(nombres, muertos);
-//		} else{
-//			duelo(nombres);
-//		}		
-//			if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
-//			cancel();
-//			}
-//		}
-
-			System.out.println(nombres.length);
+//			e.printStackTrace();
+//		} 
+		hora = fecha.getHours();
+		if(hora==2||hora==3||hora==4||hora==5){
+			System.out.println("Estoy durmiendo porque son las " + hora);
+		}
+		else{
+			if(resucitar()==true){
+			if(muertos.isEmpty()){duelo(nombres);}
+				resurreccion(nombres, muertos);
+		} else{
+			duelo(nombres);
+		}		
+			if(nombres.length == 1) {		/*el metodo run ejecuta el metodo duelo hasta que solo queda un superviviente*/
 			cancel();
+			}
+		}
+
+//			System.out.println(nombres.length);
+//			cancel();
 //		}
 	
 	} 
@@ -282,7 +282,7 @@ public class Tarea extends TimerTask{
 		twitterAviso(x,y);
 		xt = mape.get(x);
 		yt = mape.get(y);
-		System.out.println("En 5 mins se van a enfrentar " + x + " vs " + y + " solo uno de los dos seguir· con vida. Suerte!");
+		System.out.println("En 5 mins se van a enfrentar " + x + " vs " + y + " solo uno de los dos seguir√° con vida. Suerte!");
 		if(headsOrTails()== true){
 			asesino = x;
 			asesinado = y;
@@ -467,7 +467,7 @@ public class Tarea extends TimerTask{
 		if (yt==null)yt="";
 		
 		try {
-			twitter.updateStatus("En 5 mins se van a enfrentar " + asesino + " " + xt + " vs " + asesinado + " " + yt + " solo uno de los dos seguir· con vida. Suerte!");
+			twitter.updateStatus("En 5 mins se van a enfrentar " + asesino + " " + xt + " vs " + asesinado + " " + yt + " solo uno de los dos seguir√° con vida. Suerte!");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
